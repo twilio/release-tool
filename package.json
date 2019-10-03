@@ -19,7 +19,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markandrus/release-tool.git"
+    "url": "https://github.com/twilio/release-tool.git"
   },
   "dependencies": {
     "colors": "^1.1.2",
@@ -28,6 +28,6 @@
     "semver": "^5.1.0"
   },
   "devDependencies": {
-    "release-tool": "https://github.com/markandrus/release-tool.git"
+    "release-tool": "https://github.com/twilio/release-tool.git"
   }
 }

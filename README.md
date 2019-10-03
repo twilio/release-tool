@@ -40,7 +40,7 @@ $ ./node_modules/.bin/release --help
     -n, --non-interactive  run in non-interactive mode (e.g., in a script)
     -p, --publish          execute the publish plan
     -s, --slug             specify the repository slug (owner_name/repo_name)
-    -t, --token            assign the Travis CI token to use
+    -t, --token            assign the CI token to use
     -x, --execute          execute the plans (defaults to true unless using Travis CI)
 
 ```
@@ -78,6 +78,7 @@ version number must be bumped before committing the Software.
 {
   "type": "JavaScript",
   "travis": true,
+  "ci": "travis",
   "slug": "markandrus/release-tool",
   "env": {
     "GH_REF": "github.com/markandrus/release-tool.git"
