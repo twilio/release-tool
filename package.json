@@ -1,7 +1,7 @@
 {
-  "name": "release-tool",
+  "name": "twilio-release-tool",
   "version": "0.2.3-dev",
-  "description": "Release Tool",
+  "description": "Twilio Release Tool",
   "main": "lib/index.js",
   "bin": {
     "release": "./release"
@@ -10,6 +10,7 @@
     "test": "echo \"Warn: no test specified\""
   },
   "keywords": [
+    "circleci",
     "travis",
     "travis-ci",
     "ci",
@@ -28,6 +29,6 @@
     "semver": "^5.1.0"
   },
   "devDependencies": {
-    "release-tool": "https://github.com/twilio/release-tool.git"
+    "twilio-release-tool": "https://github.com/twilio/release-tool.git"
   }
 }
