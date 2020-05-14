@@ -2,8 +2,6 @@
 # use:
 # circleci config process .circleci/config.yml > config_processed.yml
 #
-# and run any job locally with:
-# circleci local execute -c config_processed.yml --job "firefox stable group"
 version: 2.1
 parameters:
   pr_workflow:    # runs for every pull request.
@@ -39,6 +37,13 @@ jobs:
         default: "Hello World"
     steps:
       - run: echo << parameters.to >>
+  ExecuteReleaseDummy:
+    executor: generic-executor
+    steps:
+      - run: echo relasecommand = << pipeline.parameters.releaseCommand >>
+      - run: echo GH_TOKEN=$GH_TOKEN
+      - run: echo NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
+
 
 workflows:
   version: 2
@@ -50,8 +55,15 @@ workflows:
   Release_Workflow:
     when: << pipeline.parameters.release_workflow >>
     jobs:
-      - hold:
+      - hold1:
           type: approval
+      - ExecuteReleaseDummy:
+          context: sdk_js
+          requires: [hold1]
+      - hold2:
+          type: approval
+          requires: [ExecuteReleaseDummy]
       - ExecuteRelease: # this job has conditional steps, no-ops when pipeline.parameters.releaseCommand not specified
+          context: sdk_js
           releaseCommand: << pipeline.parameters.releaseCommand >>
-          requires: [hold]
+          requires: [hold2]
