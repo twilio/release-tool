@@ -29,6 +29,6 @@
     "semver": "^5.1.0"
   },
   "devDependencies": {
-    "twilio-release-tool": "https://github.com/twilio/release-tool.git"
+    "twilio-release-tool": "https://github.com/twilio/release-tool.git#JSDK-2528_circleci"
   }
 }
