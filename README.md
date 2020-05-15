@@ -77,11 +77,10 @@ version number must be bumped before committing the Software.
 ```json
 {
   "type": "JavaScript",
-  "travis": true,
-  "ci": "travis",
-  "slug": "markandrus/release-tool",
+  "ci": "circleci",
+  "slug": "twilio/release-tool",
   "env": {
-    "GH_REF": "github.com/markandrus/release-tool.git"
+    "GH_REF": "github.com/twilio/release-tool.git"
   },
   "plans": {
     "release": {
@@ -124,12 +123,11 @@ unassigned variables referenced in a plan's commands can be overridden by the
 environment or command-line arguments. All other assigned variables are fixed
 and cannot be overridden except in the .release.json itself.
 
-Travis CI
+Travis CI Or CircleCI
 ---------
 
-If you set the property "travis" to `true` in the top-level of your software's
+If you set the property `ci` to `travis` or `circleci` in the top-level of your software's
 .release.json, then the tool will not execute any plans locally; instead, it
-will POST a request to Travis CI in order to execute the plans. You can also
-set the property to "pro".
+will POST a request to Travis CI  or CircleCi in order to execute the plans.
 
 Be very careful not to leak any sensitive data.
