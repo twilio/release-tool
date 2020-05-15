@@ -126,8 +126,9 @@ and cannot be overridden except in the .release.json itself.
 Travis CI Or CircleCI
 ---------
 
-If you set the property `ci` to `travis` or `circleci` in the top-level of your software's
-.release.json, then the tool will not execute any plans locally; instead, it
-will POST a request to Travis CI  or CircleCi in order to execute the plans.
+If you set the property `ci` to `travis` , `circleci` or `travis-pro` in the
+top-level of your software's .release.json, then the tool will not execute any
+plans locally; instead, it will POST a request to Travis CI  or CircleCi in
+order to execute the plans.
 
 Be very careful not to leak any sensitive data.
