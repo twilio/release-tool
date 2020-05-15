@@ -23,7 +23,8 @@ jobs:
   ExecuteRelease:
     executor: generic-executor
     steps:
-      - checkout # release command builds as part of the flow.
+      - checkout
+      - run: npm install
       - run: << pipeline.parameters.releaseCommand >>
   PrJob:
     executor: generic-executor
