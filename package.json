@@ -1,6 +1,6 @@
 {
   "name": "twilio-release-tool",
-  "version": "0.2.8-dev",
+  "version": "0.2.9",
   "description": "Twilio Release Tool",
   "main": "lib/index.js",
   "bin": {
