@@ -10,7 +10,7 @@ parameters:
   release_workflow:
     type: boolean
     default: false
-  releaseCommand:
+  release_command:
     type: string
     default: "echo no release command was specified" # release-tool specifies the real command.
 executors:
@@ -25,7 +25,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: << pipeline.parameters.releaseCommand >>
+      - run: << pipeline.parameters.release_command >>
   PrJob:
     executor: generic-executor
     steps:
@@ -33,7 +33,7 @@ jobs:
   ExecuteReleaseDummy:
     executor: generic-executor
     steps:
-      - run: echo Will execute "<< pipeline.parameters.releaseCommand >>"
+      - run: echo Will execute "<< pipeline.parameters.release_command >>"
 
 
 workflows:
@@ -45,11 +45,10 @@ workflows:
   Release_Workflow:
     when: << pipeline.parameters.release_workflow >>
     jobs:
-      - ExecuteReleaseDummy:
-          context: sdk_js
+      - ExecuteReleaseDummy
       - hold:
           type: approval
           requires: [ExecuteReleaseDummy]
-      - ExecuteRelease: # this job has conditional steps, no-ops when pipeline.parameters.releaseCommand not specified
+      - ExecuteRelease:
           context: sdk_js
           requires: [hold]
