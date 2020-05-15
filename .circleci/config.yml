@@ -1,0 +1,55 @@
+# to validate any changes
+# use:
+# circleci config process .circleci/config.yml > config_processed.yml
+#
+version: 2.1
+parameters:
+  pr_workflow:    # runs for every pull request.
+    type: boolean
+    default: true # by default pr workflow will get executed.
+  release_workflow:
+    type: boolean
+    default: false
+  releaseCommand:
+    type: string
+    default: "echo no release command was specified" # release-tool specifies the real command.
+executors:
+  generic-executor:
+    docker:
+      - image: 'circleci/node:latest'
+
+
+jobs:
+  ExecuteRelease:
+    executor: generic-executor
+    steps:
+      - checkout
+      - run: npm install
+      - run: << pipeline.parameters.releaseCommand >>
+  PrJob:
+    executor: generic-executor
+    steps:
+      - run: echo This is a placeholder for PR job
+  ExecuteReleaseDummy:
+    executor: generic-executor
+    steps:
+      - run: echo Will execute "<< pipeline.parameters.releaseCommand >>"
+
+
+workflows:
+  version: 2
+  PR_Workflow:
+    when: << pipeline.parameters.pr_workflow >>
+    jobs:
+      - PrJob
+  Release_Workflow:
+    when: << pipeline.parameters.release_workflow >>
+    jobs:
+      - ExecuteReleaseDummy:
+          context: sdk_js
+      - hold:
+          type: approval
+          requires: [ExecuteReleaseDummy]
+      - ExecuteRelease: # this job has conditional steps, no-ops when pipeline.parameters.releaseCommand not specified
+          context: sdk_js
+          requires: [hold]

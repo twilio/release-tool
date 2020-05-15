@@ -1,9 +1,9 @@
 {
   "type": "JavaScript",
-  "travis": true,
-  "slug": "markandrus/release-tool",
+  "ci": "circleci",
+  "slug": "twilio/release-tool",
   "env": {
-    "GH_REF": "github.com/markandrus/release-tool.git"
+    "GH_REF": "github.com/twilio/release-tool.git"
   },
   "plans": {
     "release": {

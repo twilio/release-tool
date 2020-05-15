@@ -1,7 +1,7 @@
 {
-  "name": "release-tool",
-  "version": "0.2.3-dev",
-  "description": "Release Tool",
+  "name": "twilio-release-tool",
+  "version": "0.2.11-dev",
+  "description": "Twilio Release Tool",
   "main": "lib/index.js",
   "bin": {
     "release": "./release"
@@ -10,6 +10,7 @@
     "test": "echo \"Warn: no test specified\""
   },
   "keywords": [
+    "circleci",
     "travis",
     "travis-ci",
     "ci",
@@ -19,7 +20,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markandrus/release-tool.git"
+    "url": "https://github.com/twilio/release-tool.git"
   },
   "dependencies": {
     "colors": "^1.1.2",
@@ -28,6 +29,6 @@
     "semver": "^5.1.0"
   },
   "devDependencies": {
-    "release-tool": "https://github.com/markandrus/release-tool.git"
+    "twilio-release-tool": "https://github.com/twilio/release-tool.git#JSDK-2528_circleci"
   }
 }
