@@ -8,8 +8,8 @@
   "plans": {
     "release": {
       "env": {
-        "GIT_USER_NAME": "travis-ci",
-        "GIT_USER_EMAIL": "travis@travis-ci.org"
+        "GIT_USER_NAME": "twilio-vblocks-ci",
+        "GIT_USER_EMAIL": "svc.vblocks-ci@twilio.com"
       },
       "commands": [
         "node ./node_modules/.bin/release --bump ${CURRENT_VERSION} ${RELEASE_VERSION}",
