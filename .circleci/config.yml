@@ -50,5 +50,5 @@ workflows:
           type: approval
           requires: [ExecuteReleaseDummy]
       - ExecuteRelease:
-          context: vblocks-js
+          context: sdk_js
           requires: [hold]
